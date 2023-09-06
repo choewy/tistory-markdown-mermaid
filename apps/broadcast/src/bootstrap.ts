@@ -3,7 +3,7 @@ import { json, urlencoded } from 'express';
 import { INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
-import { SecretLibModule, SecretLibService } from '@app/secret';
+import { SecretLibModule, SecretLibService, SecretsManagerPrefix } from '@app/secret';
 import { AppConfig } from '@app/conf';
 
 import { RootModule } from '@broadcast/root';
@@ -11,8 +11,7 @@ import { RootModule } from '@broadcast/root';
 export class Bootstrap {
   public static async define() {
     const secretManager = await NestFactory.createApplicationContext(SecretLibModule);
-    const secretService = secretManager.get(SecretLibService);
-    await secretService.override('broadcast');
+    await secretManager.get(SecretLibService).loads(SecretsManagerPrefix.BROADCAST);
 
     return new Bootstrap(await NestFactory.create(RootModule, {}));
   }

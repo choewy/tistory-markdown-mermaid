@@ -1,52 +1,66 @@
-import { existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { Injectable } from '@nestjs/common';
+import {
+  GetSecretValueCommand,
+  SecretsManagerClient,
+  SecretsManagerClientConfig,
+} from '@aws-sdk/client-secrets-manager';
 
 import { NodeEnv } from '@app/conf';
 
-import { SecretsManagerKey } from './enums';
+import { SecretsManagerKey, SecretsManagerPrefix } from './enums';
 
 @Injectable()
 export class SecretLibService {
   private readonly NODE_ENV = process.env.NODE_ENV as NodeEnv.LOCAL;
 
-  private async loadByJSON(prefix: string): Promise<Array<object>> {
-    const loads = [];
+  private readonly AWS_REGION = process.env.AWS_REGION;
+  private readonly AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+  private readonly AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY;
 
-    for (const key of [prefix].concat(Object.values(SecretsManagerKey))) {
-      const path = `.env.${key}.json`;
+  private readonly client: SecretsManagerClient;
 
-      if (!existsSync(path)) {
-        // get by secrets manager
+  constructor() {
+    const config: SecretsManagerClientConfig = { region: this.AWS_REGION };
+
+    if (this.NODE_ENV === NodeEnv.LOCAL) {
+      config.credentials = {
+        accessKeyId: this.AWS_ACCESS_KEY,
+        secretAccessKey: this.AWS_SECRET_ACCESS_KEY,
+      };
+    }
+
+    this.client = new SecretsManagerClient(config);
+  }
+
+  private override(o: object): void {
+    for (const [k, v] of Object.entries(o)) {
+      process.env[k] = v;
+    }
+  }
+
+  async loads(prefix: SecretsManagerPrefix): Promise<void> {
+    const isLocal = this.NODE_ENV === NodeEnv.LOCAL;
+    const keys = ([prefix] as Array<SecretsManagerPrefix | SecretsManagerKey>).concat(Object.values(SecretsManagerKey));
+
+    for (const key of keys) {
+      const path = ['.env', key, 'json'].join('.');
+      const secretId = [this.NODE_ENV, key].join('/');
+
+      if (isLocal && existsSync(path)) {
+        this.override(JSON.parse(readFileSync(path, { encoding: 'utf-8' }).toString()));
+
         continue;
       }
 
-      loads.push(JSON.parse(readFileSync(path, { encoding: 'utf-8' }).toString()));
-    }
+      const command = new GetSecretValueCommand({ SecretId: secretId });
+      const secrets = await this.client.send(command).then((res) => JSON.parse(res.SecretString));
 
-    return loads;
-  }
+      if (isLocal) {
+        writeFileSync(path, JSON.stringify(secrets, null, 2), { encoding: 'utf-8' });
+      }
 
-  private async loadBySecretsManager(prefix: string): Promise<Array<object>> {
-    const loads = [];
-
-    console.log(prefix);
-
-    return loads;
-  }
-
-  async override(prefix: string): Promise<void> {
-    let loads: object[] = [];
-
-    if (this.NODE_ENV === NodeEnv.LOCAL) {
-      loads = await this.loadByJSON(prefix);
-    } else {
-      loads = await this.loadBySecretsManager(prefix);
-    }
-
-    for (const o of loads) {
-      Object.entries(o).forEach(([k, v]) => {
-        process.env[k] = v;
-      });
+      this.override(secrets);
     }
   }
 }
