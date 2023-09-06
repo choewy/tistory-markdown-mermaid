@@ -18,8 +18,8 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@main/*": [
-        "apps/main/src/*"
+      "@service/*": [
+        "apps/service/src/*"
       ],
       "@broadcast/*": [
         "apps/broadcast/src/*"
@@ -53,6 +53,12 @@
       ],
       "@app/util/*": [
         "libs/util/src/*"
+      ],
+      "@app/secret": [
+        "libs/secret/src"
+      ],
+      "@app/secret/*": [
+        "libs/secret/src/*"
       ]
     }
   }

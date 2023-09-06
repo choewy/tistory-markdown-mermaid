@@ -7,6 +7,15 @@
     "deleteOutDir": true
   },
   "projects": {
+    "service": {
+      "type": "application",
+      "root": "service",
+      "entryFile": "main",
+      "sourceRoot": "apps/service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/service/tsconfig.app.json"
+      }
+    },
     "broadcast": {
       "type": "application",
       "root": "broadcast",
@@ -14,15 +23,6 @@
       "sourceRoot": "apps/broadcast/src",
       "compilerOptions": {
         "tsConfigPath": "apps/broadcast/tsconfig.app.json"
-      }
-    },
-    "main": {
-      "type": "application",
-      "root": "main",
-      "entryFile": "main",
-      "sourceRoot": "apps/main/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/main/tsconfig.app.json"
       }
     },
     "db": {
@@ -68,6 +68,15 @@
       "sourceRoot": "libs/util/src",
       "compilerOptions": {
         "tsConfigPath": "libs/util/tsconfig.lib.json"
+      }
+    },
+    "secret": {
+      "type": "library",
+      "root": "libs/secret",
+      "entryFile": "index",
+      "sourceRoot": "libs/secret/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/secret/tsconfig.lib.json"
       }
     }
   }
