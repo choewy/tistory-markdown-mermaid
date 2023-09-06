@@ -16,6 +16,44 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@main/*": [
+        "apps/main/src/*"
+      ],
+      "@broadcast/*": [
+        "apps/broadcast/src/*"
+      ],
+      "@app/db": [
+        "libs/db/src"
+      ],
+      "@app/db/*": [
+        "libs/db/src/*"
+      ],
+      "@app/redis": [
+        "libs/redis/src"
+      ],
+      "@app/redis/*": [
+        "libs/redis/src/*"
+      ],
+      "@app/conf": [
+        "libs/conf/src"
+      ],
+      "@app/conf/*": [
+        "libs/conf/src/*"
+      ],
+      "@app/docs": [
+        "libs/docs/src"
+      ],
+      "@app/docs/*": [
+        "libs/docs/src/*"
+      ],
+      "@app/util": [
+        "libs/util/src"
+      ],
+      "@app/util/*": [
+        "libs/util/src/*"
+      ]
+    }
   }
 }
