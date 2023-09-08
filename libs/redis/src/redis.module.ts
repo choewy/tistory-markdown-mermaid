@@ -1,8 +1,12 @@
 import { Module } from '@nestjs/common';
-import { RedisService } from './redis.service';
+
+import { ConfLibModuleRef } from '@app/conf';
+
+import { RedisLibService } from './redis.service';
 
 @Module({
-  providers: [RedisService],
-  exports: [RedisService],
+  imports: [ConfLibModuleRef],
+  providers: [RedisLibService],
+  exports: [RedisLibService],
 })
-export class RedisModule {}
+export class RedisLibModule {}
