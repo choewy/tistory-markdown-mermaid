@@ -1,20 +1,26 @@
 import { Module, forwardRef } from '@nestjs/common';
-import { DbService } from './db.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { ConfLibModuleRef, DbConfig } from '@app/conf';
+
+import { User } from './entities';
+import { RepositoryProvider, UserRepository } from './repositories';
+
+const entities = [User];
+const repositoryProvider = RepositoryProvider.forRoot([UserRepository]);
 
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
       imports: [ConfLibModuleRef],
       inject: [DbConfig],
-      useFactory(dbConfig: DbConfig) {
-        return dbConfig.getOptions();
+      useFactory(config: DbConfig) {
+        return config.getOptions(entities);
       },
     }),
   ],
-  providers: [DbService],
-  exports: [DbService],
+  providers: repositoryProvider,
+  exports: repositoryProvider,
 })
 export class DbLibModule {}
 export const DbLibModuleRef = forwardRef(() => DbLibModule);

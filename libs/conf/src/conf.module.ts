@@ -1,11 +1,12 @@
 import { Module, forwardRef } from '@nestjs/common';
 
-import { AppConfig, CorsConfig, DbConfig } from './configs';
-import { ConfService } from './conf.service';
+import { AppConfig, AwsConfig, CorsConfig, DbConfig, RedisConfig } from './configs';
+import { ConfigModule } from '@nestjs/config';
 
-const configs = [ConfService, AppConfig, CorsConfig, DbConfig];
+const configs = [AwsConfig, AppConfig, CorsConfig, DbConfig, RedisConfig];
 
 @Module({
+  imports: [ConfigModule.forRoot()],
   providers: configs,
   exports: configs,
 })
