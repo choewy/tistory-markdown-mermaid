@@ -4,10 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfLibModuleRef, DbConfig } from '@app/conf';
 
 import { Following, User } from './entities';
-import { RepositoryProvider, UserRepository } from './repositories';
+import { FollowingRepository, RepositoryProvider, UserRepository } from './repositories';
 
 const entities = [User, Following];
-const repositoryProvider = RepositoryProvider.forRoot([UserRepository]);
+const repositoryProvider = RepositoryProvider.forRoot([UserRepository, FollowingRepository]);
 
 @Module({
   imports: [
