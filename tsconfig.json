@@ -59,6 +59,12 @@
       ],
       "@app/secret/*": [
         "libs/secret/src/*"
+      ],
+      "@app/queue": [
+        "libs/queue/src"
+      ],
+      "@app/queue/*": [
+        "libs/queue/src/*"
       ]
     }
   }
