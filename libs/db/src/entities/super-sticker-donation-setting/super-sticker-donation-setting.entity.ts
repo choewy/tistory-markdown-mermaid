@@ -25,9 +25,9 @@ export class SuperStickerDonationSetting extends SuperStickerDonationSettingRela
   @NotNullColumn({
     type: 'bigint',
     unsigned: true,
-    comment: 'Studio PK',
+    comment: 'DonationSetting PK',
   })
-  studioId: number;
+  donationSettingId: number;
 
   @NotNullColumn({
     type: 'int',

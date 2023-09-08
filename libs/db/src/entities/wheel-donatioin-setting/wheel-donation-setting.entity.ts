@@ -25,9 +25,9 @@ export class WheelDonationSetting extends WheelDonationSettingRelations {
   @NotNullColumn({
     type: 'bigint',
     unsigned: true,
-    comment: 'Studio PK',
+    comment: 'DonationSetting PK',
   })
-  studioId: number;
+  donationSettingId: number;
 
   @NotNullBooleanColumn({
     comment: '후원 가능 여부',
