@@ -1,10 +1,10 @@
 import { Module, forwardRef } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 
 import { SecretLibService } from './secret.service';
+import { ConfLibModuleRef } from '@app/conf';
 
 @Module({
-  imports: [ConfigModule.forRoot()],
+  imports: [ConfLibModuleRef],
   providers: [SecretLibService],
 })
 export class SecretLibModule {}

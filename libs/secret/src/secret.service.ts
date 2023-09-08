@@ -1,12 +1,10 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs';
-import { Injectable } from '@nestjs/common';
-import {
-  GetSecretValueCommand,
-  SecretsManagerClient,
-  SecretsManagerClientConfig,
-} from '@aws-sdk/client-secrets-manager';
 
-import { NodeEnv } from '@app/conf';
+import { Injectable } from '@nestjs/common';
+
+import { GetSecretValueCommand, SecretsManagerClient } from '@aws-sdk/client-secrets-manager';
+
+import { AwsConfig, NodeEnv } from '@app/conf';
 
 import { SecretsManagerKey, SecretsManagerPrefix } from './enums';
 
@@ -14,23 +12,10 @@ import { SecretsManagerKey, SecretsManagerPrefix } from './enums';
 export class SecretLibService {
   private readonly NODE_ENV = process.env.NODE_ENV as NodeEnv.LOCAL;
 
-  private readonly AWS_REGION = process.env.AWS_REGION;
-  private readonly AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
-  private readonly AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY;
-
   private readonly client: SecretsManagerClient;
 
-  constructor() {
-    const config: SecretsManagerClientConfig = { region: this.AWS_REGION };
-
-    if (this.NODE_ENV === NodeEnv.LOCAL) {
-      config.credentials = {
-        accessKeyId: this.AWS_ACCESS_KEY,
-        secretAccessKey: this.AWS_SECRET_ACCESS_KEY,
-      };
-    }
-
-    this.client = new SecretsManagerClient(config);
+  constructor(private readonly awsConfig: AwsConfig) {
+    this.client = this.awsConfig.getSecetsManagerClient();
   }
 
   private override(o: object): void {
@@ -40,12 +25,14 @@ export class SecretLibService {
   }
 
   async loads(prefix: SecretsManagerPrefix): Promise<void> {
+    process.env.APP = prefix;
+
     const isLocal = this.NODE_ENV === NodeEnv.LOCAL;
     const keys = ([prefix] as Array<SecretsManagerPrefix | SecretsManagerKey>).concat(Object.values(SecretsManagerKey));
 
     for (const key of keys) {
-      const path = ['.env', key, 'json'].join('.');
-      const secretId = [this.NODE_ENV, key].join('/');
+      const path = this.awsConfig.getSecrestManagerFilePath(key);
+      const secretId = this.awsConfig.getSecretsManagerSecretId(key);
 
       if (isLocal && existsSync(path)) {
         this.override(JSON.parse(readFileSync(path, { encoding: 'utf-8' }).toString()));
