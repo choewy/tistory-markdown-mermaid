@@ -4,3 +4,14 @@ export enum UserOAuthPlatform {
   KAKAO = 'kakao',
   NAVER = 'naver',
 }
+
+export enum UserType {
+  CREATOR = 'creator',
+  VIEWER = 'viewer',
+}
+
+export enum UserStatus {
+  ACTIVE = 'active',
+  BLOCK = 'block',
+  WITHDRAW = 'withdraw',
+}

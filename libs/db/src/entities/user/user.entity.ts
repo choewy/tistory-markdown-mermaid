@@ -1,11 +1,34 @@
-import { Entity, PrimaryGeneratedColumn } from 'typeorm';
+import Decimal from 'decimal.js';
+import { DateTime } from 'luxon';
+import { BeforeInsert, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-import { NotNullColumn, NullableColumn } from '@app/db/decorators';
+import {
+  CreateDateTimeColumn,
+  NotNullBooleanColumn,
+  NotNullColumn,
+  NotNullDecimalColumn,
+  NullableColumn,
+  NullableDateTimeColumn,
+  UpdateDateTimeColumn,
+} from '@app/db/decorators';
 
-import { UserOAuthPlatform } from './enums';
+import { UserOAuthPlatform, UserStatus, UserType } from './enums';
+
+export class UserMapper {
+  unsettledCash: number | null;
+  isFollowing: any;
+}
+
+export class UserRelation extends UserMapper {
+  channel: any | null;
+  following: any[];
+  followers: any[];
+  favoriteStickers: any[];
+  favoriteCreatorStickerCategories: any[];
+}
 
 @Entity()
-export class User {
+export class User extends UserRelation {
   @PrimaryGeneratedColumn({
     type: 'bigint',
     unsigned: true,
@@ -68,4 +91,68 @@ export class User {
     default: 0,
   })
   cash: number;
+
+  @NotNullDecimalColumn({
+    precision: 6,
+    scale: 4,
+    comment: '보유 캐시',
+    default: 0,
+  })
+  fee: Decimal;
+
+  @NotNullColumn({
+    type: 'enum',
+    enum: UserType,
+    comment: '시청자/크리에이터 구분',
+    default: UserType.VIEWER,
+  })
+  type: UserType;
+
+  @NotNullBooleanColumn({
+    comment: '칭호 사용 여부',
+    default: true,
+  })
+  isAchievementActive: boolean;
+
+  @NotNullBooleanColumn({
+    comment: '직원 여부',
+    default: false,
+  })
+  isStaff: boolean;
+
+  @NotNullColumn({
+    type: 'enum',
+    enum: UserStatus,
+    comment: '상태',
+    default: UserStatus.ACTIVE,
+  })
+  status: UserStatus;
+
+  @CreateDateTimeColumn({
+    comment: '가입일시',
+  })
+  createdAt: DateTime;
+
+  @UpdateDateTimeColumn({
+    comment: '수정일시',
+  })
+  updatedAt: DateTime;
+
+  @NullableDateTimeColumn({
+    comment: '차단일시',
+    default: null,
+  })
+  blockedAt: DateTime | null;
+
+  @NullableDateTimeColumn({
+    comment: '탈퇴일시',
+    default: null,
+  })
+  withdrewAt: DateTime | null;
+
+  @BeforeInsert()
+  protected beforeInsert() {
+    this.createdAt = DateTime.local();
+    this.updatedAt = DateTime.local();
+  }
 }

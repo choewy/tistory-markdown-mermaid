@@ -111,7 +111,7 @@ export const NullableDateTimeColumn = (
   return Column({
     ...options,
     nullable: true,
-    type: 'timestamp',
+    type: 'datetime',
     transformer: new DateTimeColumnTransformer(),
   });
 };
@@ -120,7 +120,7 @@ export const CreateDateTimeColumn = (options: Omit<Omit<ColumnOptions, 'type'>, 
   return Column({
     ...options,
     update: false,
-    type: 'timestamp',
+    type: 'datetime',
     transformer: new DateTimeColumnTransformer(),
   });
 };
@@ -129,7 +129,7 @@ export const UpdateDateTimeColumn = (options: Omit<Omit<ColumnOptions, 'type'>, 
   return Column({
     ...options,
     onUpdate: 'NOW()',
-    type: 'timestamp',
+    type: 'datetime',
     transformer: new DateTimeColumnTransformer(),
   });
 };
@@ -138,7 +138,7 @@ export const DeleteDateTimeColumn = (options: Omit<Omit<ColumnOptions, 'type'>, 
   return Column({
     ...options,
     nullable: true,
-    type: 'timestamp',
+    type: 'datetime',
     transformer: new DateTimeColumnTransformer(),
   });
 };
