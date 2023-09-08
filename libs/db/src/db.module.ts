@@ -3,10 +3,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ConfLibModuleRef, DbConfig } from '@app/conf';
 
-import { User } from './entities';
+import { Following, User } from './entities';
 import { RepositoryProvider, UserRepository } from './repositories';
 
-const entities = [User];
+const entities = [User, Following];
 const repositoryProvider = RepositoryProvider.forRoot([UserRepository]);
 
 @Module({
