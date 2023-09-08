@@ -6,11 +6,15 @@ import { CreateDateTimeColumn } from '@app/db/decorators';
 import { User } from '../user';
 
 export class FollowingRelations {
-  @ManyToOne(() => User, (user) => user.following)
+  @ManyToOne(() => User, (user) => user.following, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   user: User;
 
-  @ManyToOne(() => User, (user) => user.followers)
+  @ManyToOne(() => User, (user) => user.followers, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   followedUser: User;
 }

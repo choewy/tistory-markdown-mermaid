@@ -1,6 +1,6 @@
 import Decimal from 'decimal.js';
 import { DateTime } from 'luxon';
-import { BeforeInsert, Entity, JoinTable, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Entity, JoinTable, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import {
   CreateDateTimeColumn,
@@ -14,6 +14,7 @@ import {
 
 import { UserOAuthPlatform, UserStatus, UserType } from './enums';
 import { Following } from '../following';
+import { Studio } from '../studio';
 
 export class UserMapper {
   unsettledCash: number | null;
@@ -21,9 +22,16 @@ export class UserMapper {
 }
 
 export class UserRelation extends UserMapper {
-  channel: any | null;
+  @OneToOne(() => Studio, (e) => e.user, {
+    nullable: true,
+    cascade: true,
+  })
+  @JoinTable()
+  studio: Studio | null;
 
-  @OneToMany(() => Following, (e) => e.user)
+  @OneToMany(() => Following, (e) => e.user, {
+    cascade: true,
+  })
   @JoinTable()
   following: Following[];
 
