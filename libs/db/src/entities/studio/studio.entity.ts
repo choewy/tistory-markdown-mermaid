@@ -1,4 +1,4 @@
-import { BeforeInsert, Entity, JoinColumn, JoinTable, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Entity, JoinColumn, JoinTable, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { User } from '../user';
 import { CreateDateTimeColumn, NotNullColumn, NullableColumn, UpdateDateTimeColumn } from '@app/db/decorators';
@@ -7,6 +7,7 @@ import { Broadcast } from '../broadcast';
 import { PlaySetting } from '../play-setting';
 import { ClipSetting } from '../clip-setting';
 import { DonationSetting } from '../donation-setting';
+import { Overlay } from '../overlay';
 
 export class StudioMapper {
   overlaySetting: any;
@@ -46,7 +47,12 @@ export class StudioRelations extends StudioMapper {
   @JoinTable()
   donationSetting: DonationSetting | null;
 
-  overlays: any[];
+  @OneToMany(() => Overlay, (e) => e.studio, {
+    cascade: true,
+  })
+  @JoinTable()
+  overlays: Overlay[];
+
   achievements: any[];
   roulettes: any[];
   goals: any[];

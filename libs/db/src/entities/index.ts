@@ -35,3 +35,5 @@ export * from './clip-like';
 export * from './clip-comment';
 export * from './clip-setting';
 export * from './clip-agreement';
+
+export * from './goal';

@@ -1,4 +1,4 @@
-export enum UserOAuthPlatform {
+export enum UserOauthPlatform {
   TWITCH = 'twitch',
   GOOGLE = 'google',
   KAKAO = 'kakao',

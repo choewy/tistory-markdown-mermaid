@@ -4,9 +4,14 @@ import { BeforeInsert, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGenerated
 import { CreateDateTimeColumn, NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
 import { Overlay } from '../overlay';
+import { Goal } from '../goal';
 import { GoalWidgetSkin } from '../goal-widget-skin';
 
-export class GoalWidgetRelations {
+export class GoalWidgetMapper {
+  goal: Goal | null;
+}
+
+export class GoalWidgetRelations extends GoalWidgetMapper {
   @OneToOne(() => Overlay, (e) => e.message, {
     onDelete: 'CASCADE',
   })

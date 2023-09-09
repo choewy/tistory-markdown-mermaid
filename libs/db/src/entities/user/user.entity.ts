@@ -12,9 +12,11 @@ import {
   UpdateDateTimeColumn,
 } from '@app/db/decorators';
 
-import { UserOAuthPlatform, UserStatus, UserType } from './enums';
 import { Following } from '../following';
 import { Studio } from '../studio';
+
+import { UserStatus, UserType } from './enums';
+import { UserOauth } from './user-oauth.entity';
 
 export class UserMapper {
   unsettledCash: number | null;
@@ -22,6 +24,12 @@ export class UserMapper {
 }
 
 export class UserRelation extends UserMapper {
+  @OneToOne(() => UserOauth, (e) => e.user, {
+    cascade: true,
+  })
+  @JoinTable()
+  oauth: UserOauth;
+
   @OneToOne(() => Studio, (e) => e.user, {
     nullable: true,
     cascade: true,
@@ -48,36 +56,9 @@ export class User extends UserRelation {
   @PrimaryGeneratedColumn({
     type: 'bigint',
     unsigned: true,
+    comment: 'PK',
   })
   readonly id: number;
-
-  @NotNullColumn({
-    type: 'enum',
-    enum: UserOAuthPlatform,
-    comment: 'OAuth Platform',
-  })
-  oauthPlatform: UserOAuthPlatform;
-
-  @NotNullColumn({
-    type: 'varchar',
-    length: 100,
-    comment: 'OAuth ID',
-  })
-  oauthId: string;
-
-  @NotNullColumn({
-    type: 'varchar',
-    length: 500,
-    comment: 'OAuth Access Token',
-  })
-  oauthAccessToken: string;
-
-  @NotNullColumn({
-    type: 'varchar',
-    length: 500,
-    comment: 'OAuth Access Token',
-  })
-  oauthRefreshToken: string;
 
   @NotNullColumn({
     type: 'varchar',

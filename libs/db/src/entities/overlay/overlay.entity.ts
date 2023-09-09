@@ -21,7 +21,7 @@ import { VideoWidget } from '../video-widget';
 import { MessageWidget } from '../message-widget';
 
 export class OverlayRelations {
-  @ManyToOne(() => Studio, {
+  @ManyToOne(() => Studio, (e) => e.overlays, {
     onDelete: 'CASCADE',
   })
   @JoinColumn()

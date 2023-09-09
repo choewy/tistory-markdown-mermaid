@@ -5,6 +5,7 @@ import { ConfLibModuleRef, DbConfig } from '@app/conf';
 
 import {
   User,
+  UserOauth,
   Following,
   Studio,
   Broadcast,
@@ -37,12 +38,22 @@ import {
   GoalWidgetSkin,
   RouletteWidget,
   RouletteWidgetSkin,
+  Goal,
+  GoalDetail,
 } from './entities';
 
-import { FollowingRepository, RepositoryProvider, UserRepository } from './repositories';
+import {
+  FollowingRepository,
+  GoalDetailRepository,
+  GoalRepository,
+  RepositoryProvider,
+  UserOauthRepository,
+  UserRepository,
+} from './repositories';
 
 const entities = [
   User,
+  UserOauth,
   Following,
   Studio,
   Broadcast,
@@ -59,6 +70,8 @@ const entities = [
   SuperStickerDonationSetting,
   VideoDonationSetting,
   WheelDonationSetting,
+  Goal,
+  GoalDetail,
   Clip,
   ClipDetail,
   ClipLike,
@@ -77,7 +90,13 @@ const entities = [
   VideoWidget,
 ];
 
-const repositoryProvider = RepositoryProvider.forRoot([UserRepository, FollowingRepository]);
+const repositoryProvider = RepositoryProvider.forRoot([
+  UserRepository,
+  UserOauthRepository,
+  FollowingRepository,
+  GoalRepository,
+  GoalDetailRepository,
+]);
 
 @Module({
   imports: [
