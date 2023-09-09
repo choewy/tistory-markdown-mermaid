@@ -16,7 +16,7 @@ export class RepositoryProvider {
     };
   }
 
-  public static forRoot(repositories: Type<Repository<any>>[]) {
+  public static forFeature(repositories: Type<Repository<any>>[]) {
     return repositories.map(this.provider);
   }
 }

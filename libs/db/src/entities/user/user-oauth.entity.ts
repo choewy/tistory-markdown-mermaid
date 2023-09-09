@@ -16,6 +16,17 @@ export class UserOauthRelations {
 
 @Entity()
 export class UserOauth extends UserOauthRelations {
+  public static createOf(oauthId: string, platform: UserOauthPlatform, accessToken: string, refreshToken: string) {
+    const e = new UserOauth();
+
+    e.oauthId = oauthId;
+    e.platform = platform;
+    e.accessToken = accessToken;
+    e.refreshToken = refreshToken;
+
+    return e;
+  }
+
   @PrimaryColumn({
     type: 'bigint',
     unsigned: true,

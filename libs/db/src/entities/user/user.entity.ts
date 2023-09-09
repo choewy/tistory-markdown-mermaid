@@ -53,6 +53,16 @@ export class UserRelation extends UserMapper {
 
 @Entity()
 export class User extends UserRelation {
+  public static createOf(nickname: string, email: string, imagePath: string | null) {
+    const e = new User();
+
+    e.nickname = nickname;
+    e.email = email;
+    e.imagePath = imagePath;
+
+    return e;
+  }
+
   @PrimaryGeneratedColumn({
     type: 'bigint',
     unsigned: true,
@@ -78,6 +88,7 @@ export class User extends UserRelation {
     type: 'varchar',
     length: 512,
     comment: '이미지 경로',
+    default: null,
   })
   imagePath: string | null;
 
@@ -92,8 +103,8 @@ export class User extends UserRelation {
   @NotNullDecimalColumn({
     precision: 6,
     scale: 4,
-    comment: '보유 캐시',
-    default: 0,
+    comment: '수수료',
+    default: new Decimal(0),
   })
   fee: Decimal;
 

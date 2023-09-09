@@ -42,15 +42,6 @@ import {
   GoalDetail,
 } from './entities';
 
-import {
-  FollowingRepository,
-  GoalDetailRepository,
-  GoalRepository,
-  RepositoryProvider,
-  UserOauthRepository,
-  UserRepository,
-} from './repositories';
-
 const entities = [
   User,
   UserOauth,
@@ -90,14 +81,6 @@ const entities = [
   VideoWidget,
 ];
 
-const repositoryProvider = RepositoryProvider.forRoot([
-  UserRepository,
-  UserOauthRepository,
-  FollowingRepository,
-  GoalRepository,
-  GoalDetailRepository,
-]);
-
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -108,8 +91,6 @@ const repositoryProvider = RepositoryProvider.forRoot([
       },
     }),
   ],
-  providers: repositoryProvider,
-  exports: repositoryProvider,
 })
 export class DbLibModule {}
 export const DbLibModuleRef = forwardRef(() => DbLibModule);
