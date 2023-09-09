@@ -15,5 +15,5 @@ import { NaverOauthService } from './naver';
   providers: [TwitchOauthService, GoogleOauthService, KakaoOauthService, NaverOauthService, OauthService],
   exports: [TwitchOauthService, GoogleOauthService, KakaoOauthService, NaverOauthService, OauthService],
 })
-export class OauthModule {}
-export const OauthModuleRef = forwardRef(() => OauthModule);
+export class OauthLibModule {}
+export const OauthLibModuleRef = forwardRef(() => OauthLibModule);

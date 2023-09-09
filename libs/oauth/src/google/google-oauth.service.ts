@@ -13,6 +13,26 @@ import { GoogleOauthChannelIdResponseDto, GoogleOauthProfileResponseDto, GoogleT
 export class GoogleOauthService implements OauthServiceImpl {
   constructor(private readonly config: GoogleConfig, private readonly httpService: HttpService) {}
 
+  public getUrl(redirect_uri: string): string {
+    const url = 'https://accounts.google.com/o/oauth2/v2/auth';
+    const qs = Object.entries({
+      redirect_uri,
+      client_id: this.config.getClientId(),
+      response_type: 'code',
+      access_type: 'offline',
+      prompt: 'consent',
+      scope: [
+        'https://www.googleapis.com/auth/userinfo.email',
+        'https://www.googleapis.com/auth/userinfo.profile',
+        'https://www.googleapis.com/auth/youtube.readonly',
+      ].join(' '),
+    })
+      .map((v) => v.join('='))
+      .join('&');
+
+    return [url, qs].join('?');
+  }
+
   async getProfile(accessToken: string): Promise<OauthProfileDto> {
     const url = 'https://www.googleapis.com/oauth2/v3/userinfo';
 

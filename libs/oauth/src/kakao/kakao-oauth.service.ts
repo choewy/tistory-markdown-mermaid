@@ -14,6 +14,19 @@ import { KakaoTokenResponseDto } from './dtos';
 export class KakaoOauthService implements OauthServiceImpl {
   constructor(private readonly config: KakaoConfig, private readonly httpService: HttpService) {}
 
+  public getUrl(redirect_uri: string): string {
+    const url = 'https://kauth.kakao.com/oauth/authorize';
+    const qs = Object.entries({
+      redirect_uri,
+      client_id: this.config.getClientId(),
+      response_type: 'code',
+    })
+      .map((v) => v.join('='))
+      .join('&');
+
+    return [url, qs].join('?');
+  }
+
   async getProfile(accessToken: string): Promise<OauthProfileDto> {
     const url = 'https://kapi.kakao.com/v2/user/me';
 

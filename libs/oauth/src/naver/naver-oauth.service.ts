@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { lastValueFrom } from 'rxjs';
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
@@ -13,6 +14,19 @@ import { KakaoTokenResponseDto } from '../kakao';
 @Injectable()
 export class NaverOauthService implements OauthServiceImpl {
   constructor(private readonly config: NaverConfig, private readonly httpService: HttpService) {}
+
+  public getUrl(redirect_uri: string): string {
+    const url = 'https://nid.naver.com/oauth2.0/authorize';
+    const qs = Object.entries({
+      redirect_uri,
+      response_type: 'code',
+      state: new Decimal(Math.random() * 1000).toFixed(0),
+    })
+      .map((v) => v.join('='))
+      .join('&');
+
+    return [url, qs].join('?');
+  }
 
   async getProfile(accessToken: string): Promise<OauthProfileDto> {
     const url = 'https://openapi.naver.com/v1/nid/me';

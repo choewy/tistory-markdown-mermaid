@@ -32,6 +32,10 @@ export class OauthService {
     }
   }
 
+  public getUrl(platform: string, redirectUri: string): string {
+    return this.getService(platform).getUrl(redirectUri);
+  }
+
   async getProfile(platform: string, accessToken: string): Promise<OauthProfileDto> {
     return this.getService(platform)
       .getProfile(accessToken)

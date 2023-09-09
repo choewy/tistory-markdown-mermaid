@@ -14,6 +14,20 @@ import { TwitchOauthProfileResponseDto, TwitchTokenResponseDto } from './dtos';
 export class TwitchOauthService implements OauthServiceImpl {
   constructor(private readonly config: TwitchConfig, private readonly httpService: HttpService) {}
 
+  public getUrl(redirect_uri: string): string {
+    const url = 'https://id.twitch.tv/oauth2/authorize';
+    const qs = Object.entries({
+      redirect_uri,
+      client_id: this.config.getClientId(),
+      response_type: 'code',
+      scope: 'user:read:email',
+    })
+      .map((v) => v.join('='))
+      .join('&');
+
+    return [url, qs].join('?');
+  }
+
   async getProfile(accessToken: string): Promise<OauthProfileDto> {
     const url = 'https://api.twitch.tv/helix/users';
 
