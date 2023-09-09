@@ -18,6 +18,7 @@ import {
   ClipLike,
   ClipComment,
   ClipSetting,
+  ClipAgreement,
 } from './entities';
 import { FollowingRepository, RepositoryProvider, UserRepository } from './repositories';
 
@@ -36,6 +37,7 @@ const entities = [
   ClipLike,
   ClipComment,
   ClipSetting,
+  ClipAgreement,
 ];
 
 const repositoryProvider = RepositoryProvider.forRoot([UserRepository, FollowingRepository]);
