@@ -65,6 +65,12 @@
       ],
       "@app/queue/*": [
         "libs/queue/src/*"
+      ],
+      "@app/oauth": [
+        "libs/oauth/src"
+      ],
+      "@app/oauth/*": [
+        "libs/oauth/src/*"
       ]
     }
   }

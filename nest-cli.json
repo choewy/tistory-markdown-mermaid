@@ -87,6 +87,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/queue/tsconfig.lib.json"
       }
+    },
+    "oauth": {
+      "type": "library",
+      "root": "libs/oauth",
+      "entryFile": "index",
+      "sourceRoot": "libs/oauth/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/oauth/tsconfig.lib.json"
+      }
     }
   }
 }

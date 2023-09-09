@@ -105,7 +105,8 @@
       "^@app/docs(|/.*)$": "<rootDir>/libs/docs/src/$1",
       "^@app/util(|/.*)$": "<rootDir>/libs/util/src/$1",
       "^@app/secret(|/.*)$": "<rootDir>/libs/secret/src/$1",
-      "^@app/queue(|/.*)$": "<rootDir>/libs/queue/src/$1"
+      "^@app/queue(|/.*)$": "<rootDir>/libs/queue/src/$1",
+      "^@app/oauth(|/.*)$": "<rootDir>/libs/oauth/src/$1"
     }
   }
 }
