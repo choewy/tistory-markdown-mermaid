@@ -3,14 +3,14 @@ import { BeforeInsert, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } f
 
 import { CreateDateTimeColumn, NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
-import { Studio } from '../studio';
+import { Overlay } from '../overlay';
 
 export class NotiWidgetRelations {
-  @ManyToOne(() => Studio, {
+  @ManyToOne(() => Overlay, (e) => e.noties, {
     onDelete: 'CASCADE',
   })
   @JoinColumn()
-  studio: Studio;
+  overlay: Overlay;
 }
 
 @Entity()
@@ -25,9 +25,9 @@ export class NotiWidget extends NotiWidgetRelations {
   @NotNullColumn({
     type: 'bigint',
     unsigned: true,
-    comment: 'Studio PK',
+    comment: 'Overlay PK',
   })
-  studioId: number;
+  overlayId: number;
 
   @NotNullColumn({
     type: 'tinyint',

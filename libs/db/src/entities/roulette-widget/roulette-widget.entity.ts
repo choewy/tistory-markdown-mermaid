@@ -1,17 +1,17 @@
 import { DateTime } from 'luxon';
-import { BeforeInsert, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { CreateDateTimeColumn, NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
-import { Studio } from '../studio';
 import { RouletteWidgetSkin } from '../roulette-widget-skin';
+import { Overlay } from '../overlay';
 
 export class RouletteWidgetRelations {
-  @ManyToOne(() => Studio, {
+  @OneToOne(() => Overlay, (e) => e.message, {
     onDelete: 'CASCADE',
   })
   @JoinColumn()
-  studio: Studio;
+  overlay: Overlay;
 
   @ManyToOne(() => RouletteWidgetSkin, (e) => e.widgets, {
     nullable: true,
@@ -32,9 +32,9 @@ export class RouletteWidget extends RouletteWidgetRelations {
   @NotNullColumn({
     type: 'bigint',
     unsigned: true,
-    comment: 'Studio PK',
+    comment: 'Overlay PK',
   })
-  studioId: number;
+  overlayId: number;
 
   @NotNullColumn({
     type: 'tinyint',

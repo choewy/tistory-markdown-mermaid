@@ -1,5 +1,14 @@
 import { DateTime } from 'luxon';
-import { BeforeInsert, Entity, JoinColumn, JoinTable, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
@@ -18,37 +27,37 @@ export class OverlayRelations {
   @JoinColumn()
   studio: Studio;
 
-  @OneToOne(() => NotiWidget, {
+  @OneToMany(() => NotiWidget, (e) => e.overlay, {
     cascade: true,
   })
   @JoinTable()
-  noti: NotiWidget;
+  noties: NotiWidget[];
 
-  @OneToOne(() => MessageWidget, {
+  @OneToOne(() => MessageWidget, (e) => e.overlay, {
     cascade: true,
   })
   @JoinTable()
   message: MessageWidget;
 
-  @OneToOne(() => GoalWidget, {
+  @OneToOne(() => GoalWidget, (e) => e.overlay, {
     cascade: true,
   })
   @JoinTable()
   goal: GoalWidget;
 
-  @OneToOne(() => RouletteWidget, {
+  @OneToOne(() => RouletteWidget, (e) => e.overlay, {
     cascade: true,
   })
   @JoinTable()
   roulette: RouletteWidget;
 
-  @OneToOne(() => WheelWidget, {
+  @OneToOne(() => WheelWidget, (e) => e.overlay, {
     cascade: true,
   })
   @JoinTable()
   wheel: WheelWidget;
 
-  @OneToOne(() => VideoWidget, {
+  @OneToOne(() => VideoWidget, (e) => e.overlay, {
     cascade: true,
   })
   @JoinTable()

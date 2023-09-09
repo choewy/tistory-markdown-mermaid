@@ -4,6 +4,7 @@ import { BeforeInsert, Entity, JoinColumn, JoinTable, OneToOne, PrimaryGenerated
 import { NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
 import { Studio } from '../studio';
+import { PlayDefaultSetting } from '../play-default-setting';
 import { PlayNotiSetting } from '../play-noti-setting';
 import { PlayImageSetting } from '../play-image-setting';
 import { PlayRouletteSetting } from '../play-roulette-setting';
@@ -11,7 +12,6 @@ import { PlayVideoSetting } from '../play-video-setting';
 import { PlaySuperStickerSetting } from '../play-super-sticker-setting';
 import { PlaySoundStickerSetting } from '../play-sound-sticker-setting';
 import { PlayTtsSetting } from '../play-tts-setting';
-import { PlayDefaultSetting } from '../play-default-setting';
 
 export class PlaySettingRelations {
   @OneToOne(() => Studio, (e) => e.playSetting, {

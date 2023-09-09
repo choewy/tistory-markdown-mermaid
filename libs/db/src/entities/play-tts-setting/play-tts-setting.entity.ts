@@ -1,8 +1,9 @@
+import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import { PlaySetting } from '../play-setting';
 import { NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
-import { DateTime } from 'luxon';
+
+import { PlaySetting } from '../play-setting';
 
 export class PlayTtsSettingRelations {
   @OneToOne(() => PlaySetting, (e) => e.tts, {

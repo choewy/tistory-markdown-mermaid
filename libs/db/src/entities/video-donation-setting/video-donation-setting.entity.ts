@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import { NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
+import { NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
 import { DonationSetting } from '../donation-setting';
 
@@ -21,6 +21,12 @@ export class VideoDonationSetting extends VideoDonationSettingRelations {
     comment: 'DonationSetting PK',
   })
   readonly id: number;
+
+  @NotNullBooleanColumn({
+    comment: '후원 가능 여부',
+    default: true,
+  })
+  active: boolean;
 
   @NotNullColumn({
     type: 'int',

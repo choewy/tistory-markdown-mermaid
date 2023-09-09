@@ -1,16 +1,16 @@
 import { DateTime } from 'luxon';
-import { BeforeInsert, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { CreateDateTimeColumn, NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
-import { Studio } from '../studio';
+import { Overlay } from '../overlay';
 
 export class VideoWidgetRelations {
-  @ManyToOne(() => Studio, {
+  @OneToOne(() => Overlay, (e) => e.video, {
     onDelete: 'CASCADE',
   })
   @JoinColumn()
-  studio: Studio;
+  overlay: Overlay;
 }
 
 @Entity()
@@ -25,9 +25,9 @@ export class VideoWidget extends VideoWidgetRelations {
   @NotNullColumn({
     type: 'bigint',
     unsigned: true,
-    comment: 'Studio PK',
+    comment: 'Overlay PK',
   })
-  studioId: number;
+  overlayId: number;
 
   @NotNullColumn({
     type: 'tinyint',
