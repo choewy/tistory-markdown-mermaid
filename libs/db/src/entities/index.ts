@@ -8,3 +8,7 @@ export * from './video-donation-setting';
 export * from './wheel-donatioin-setting';
 export * from './clip-setting';
 export * from './play-setting';
+export * from './clip';
+export * from './clip-detail';
+export * from './clip-like';
+export * from './clip-comment';

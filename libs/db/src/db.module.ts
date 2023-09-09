@@ -12,8 +12,12 @@ import {
   DonationSetting,
   SuperStickerDonationSetting,
   VideoDonationSetting,
-  ClipSetting,
   WheelDonationSetting,
+  Clip,
+  ClipDetail,
+  ClipLike,
+  ClipComment,
+  ClipSetting,
 } from './entities';
 import { FollowingRepository, RepositoryProvider, UserRepository } from './repositories';
 
@@ -22,13 +26,18 @@ const entities = [
   Following,
   Studio,
   Broadcast,
-  ClipSetting,
   PlaySetting,
   DonationSetting,
   SuperStickerDonationSetting,
   VideoDonationSetting,
   WheelDonationSetting,
+  Clip,
+  ClipDetail,
+  ClipLike,
+  ClipComment,
+  ClipSetting,
 ];
+
 const repositoryProvider = RepositoryProvider.forRoot([UserRepository, FollowingRepository]);
 
 @Module({
