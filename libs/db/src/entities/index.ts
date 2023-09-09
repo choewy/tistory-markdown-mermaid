@@ -7,6 +7,7 @@ export * from './super-sticker-donation-setting';
 export * from './video-donation-setting';
 export * from './wheel-donatioin-setting';
 export * from './play-setting';
+export * from './content-template';
 
 export * from './clip';
 export * from './clip-detail';

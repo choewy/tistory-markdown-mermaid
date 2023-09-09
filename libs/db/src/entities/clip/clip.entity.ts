@@ -22,8 +22,8 @@ import {
 
 import { User } from '../user';
 import { ClipDetail } from '../clip-detail';
-import { ClipStatus } from './enums';
 import { ClipLike } from '../clip-like';
+import { ClipStatus } from './enums';
 
 export class ClipRelations {
   @OneToOne(() => ClipDetail, (e) => e.clip, {
