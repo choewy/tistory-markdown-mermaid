@@ -18,6 +18,9 @@ export class GoalWidgetRelations {
     onDelete: 'SET NULL',
   })
   skin: GoalWidgetSkin | null;
+
+  /** @todo */
+  goal: any;
 }
 
 @Entity()
@@ -55,6 +58,14 @@ export class GoalWidget extends GoalWidgetRelations {
     default: true,
   })
   visible: boolean;
+
+  @NotNullColumn({
+    type: 'char',
+    length: 7,
+    comment: '바 색상',
+    default: '#ffffff',
+  })
+  barColor: string;
 
   @CreateDateTimeColumn({
     comment: '생성일시',
