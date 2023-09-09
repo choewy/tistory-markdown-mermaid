@@ -7,6 +7,10 @@ export * from './super-sticker-donation-setting';
 export * from './video-donation-setting';
 export * from './wheel-donatioin-setting';
 export * from './play-setting';
+export * from './play-noti-setting';
+export * from './play-image-setting';
+export * from './play-roulette-setting';
+export * from './play-video-setting';
 
 export * from './overlay';
 

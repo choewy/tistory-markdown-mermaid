@@ -1,9 +1,13 @@
 import { DateTime } from 'luxon';
-import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Entity, JoinColumn, JoinTable, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
 import { Studio } from '../studio';
+import { PlayNotiSetting } from '../play-noti-setting';
+import { PlayImageSetting } from '../play-image-setting';
+import { PlayRouletteSetting } from '../play-roulette-setting';
+import { PlayVideoSetting } from '../play-video-setting';
 
 export class PlaySettingRelations {
   @OneToOne(() => Studio, (e) => e.playSetting, {
@@ -11,6 +15,30 @@ export class PlaySettingRelations {
   })
   @JoinColumn()
   studio: Studio;
+
+  @OneToOne(() => PlayNotiSetting, (e) => e.playSetting, {
+    cascade: true,
+  })
+  @JoinTable()
+  noti: PlayNotiSetting;
+
+  @OneToOne(() => PlayImageSetting, (e) => e.playSetting, {
+    cascade: true,
+  })
+  @JoinTable()
+  image: PlayImageSetting;
+
+  @OneToOne(() => PlayRouletteSetting, (e) => e.playSetting, {
+    cascade: true,
+  })
+  @JoinTable()
+  roulette: PlayRouletteSetting;
+
+  @OneToOne(() => PlayRouletteSetting, (e) => e.playSetting, {
+    cascade: true,
+  })
+  @JoinTable()
+  video: PlayVideoSetting;
 }
 
 @Entity()
@@ -31,66 +59,23 @@ export class PlaySetting extends PlaySettingRelations {
 
   @NotNullColumn({
     type: 'tinyint',
-    comment: '후원 노출 시간',
+    comment: '재생 시간',
     default: 10,
   })
   duration: number;
 
   @NotNullColumn({
     type: 'tinyint',
-    comment: '후원 재생 딜레이',
-    default: 2,
+    comment: '재생 딜레이',
+    default: 6,
   })
   delay: number;
-
-  @NotNullBooleanColumn({
-    comment: '이미지 자동 재생 여부',
-    default: true,
-  })
-  imageAuto: boolean;
-
-  @NotNullColumn({
-    type: 'tinyint',
-    comment: '이미지 확인 시간',
-    default: 12,
-  })
-  imageConfirmTime: number;
-
-  @NotNullColumn({
-    type: 'tinyint',
-    unsigned: true,
-    comment: '룰렛 볼륨',
-    default: 50,
-  })
-  rouletteVolume: number;
-
-  @NotNullColumn({
-    type: 'tinyint',
-    unsigned: true,
-    comment: '영상 볼륨',
-    default: 50,
-  })
-  videoVolume: number;
-
-  @NotNullBooleanColumn({
-    comment: '영상 자동 재생 여부',
-    default: true,
-  })
-  videoAuto: boolean;
-
-  @NotNullColumn({
-    type: 'tinyint',
-    unsigned: true,
-    comment: '영상 확인 시간',
-    default: 12,
-  })
-  videoConfirmTime: number;
 
   @NotNullBooleanColumn({
     comment: '칭호 노출 여부',
     default: true,
   })
-  achievementExpose: boolean;
+  achievement: boolean;
 
   @UpdateDateTimeColumn({
     comment: '수정일시',

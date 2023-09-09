@@ -28,6 +28,10 @@ import {
   GoalWidgetSkin,
   RouletteWidget,
   RouletteWidgetSkin,
+  PlayNotiSetting,
+  PlayImageSetting,
+  PlayRouletteSetting,
+  PlayVideoSetting,
 } from './entities';
 
 import { FollowingRepository, RepositoryProvider, UserRepository } from './repositories';
@@ -38,6 +42,10 @@ const entities = [
   Studio,
   Broadcast,
   PlaySetting,
+  PlayNotiSetting,
+  PlayImageSetting,
+  PlayRouletteSetting,
+  PlayVideoSetting,
   DonationSetting,
   SuperStickerDonationSetting,
   VideoDonationSetting,
