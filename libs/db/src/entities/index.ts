@@ -15,6 +15,7 @@ export * from './message-widget';
 export * from './goal-widget';
 export * from './goal-widget-skin';
 export * from './roulette-widget';
+export * from './roulette-widget-skin';
 export * from './wheel-widget';
 export * from './wheel-widget-skin';
 export * from './video-widget';

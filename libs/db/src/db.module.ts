@@ -27,6 +27,7 @@ import {
   GoalWidget,
   GoalWidgetSkin,
   RouletteWidget,
+  RouletteWidgetSkin,
 } from './entities';
 
 import { FollowingRepository, RepositoryProvider, UserRepository } from './repositories';
@@ -52,6 +53,7 @@ const entities = [
   GoalWidget,
   GoalWidgetSkin,
   RouletteWidget,
+  RouletteWidgetSkin,
   WheelWidget,
   WheelWidgetSkin,
   VideoWidget,

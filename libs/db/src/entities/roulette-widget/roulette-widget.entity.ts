@@ -4,6 +4,7 @@ import { BeforeInsert, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } f
 import { CreateDateTimeColumn, NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
 import { Studio } from '../studio';
+import { RouletteWidgetSkin } from '../roulette-widget-skin';
 
 export class RouletteWidgetRelations {
   @ManyToOne(() => Studio, {
@@ -11,6 +12,12 @@ export class RouletteWidgetRelations {
   })
   @JoinColumn()
   studio: Studio;
+
+  @ManyToOne(() => RouletteWidgetSkin, (e) => e.widgets, {
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
+  skin: RouletteWidgetSkin | null;
 }
 
 @Entity()
