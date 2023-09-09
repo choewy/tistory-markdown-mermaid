@@ -4,11 +4,15 @@ import { DateTime } from 'luxon';
 import { FindOperator, ValueTransformer } from 'typeorm';
 
 export class DecimalColumnTransformer implements ValueTransformer {
-  constructor(private readonly precision?: number) {}
+  constructor(private readonly precision?: number, private readonly defaultValue: Decimal = null) {}
 
   to(value: Decimal | FindOperator<Decimal> | null): string | FindOperator<Decimal> | null {
     if (value == null) {
-      return null;
+      if (this.defaultValue) {
+        return this.defaultValue.toFixed(this.precision);
+      } else {
+        return null;
+      }
     }
 
     if (value instanceof FindOperator) {

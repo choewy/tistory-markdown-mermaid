@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Column, ColumnOptions, PrimaryColumn, PrimaryColumnOptions } from 'typeorm';
 import {
   BooleanColumnTransformer,
@@ -50,7 +51,10 @@ export const NotNullDecimalColumn = (
   return Column({
     ...options,
     type: 'decimal',
-    transformer: new DecimalColumnTransformer(options.fiexedPrecision),
+    transformer: new DecimalColumnTransformer(
+      options.fiexedPrecision,
+      options.default instanceof Decimal ? options.default : new Decimal(options.default),
+    ),
   });
 };
 
