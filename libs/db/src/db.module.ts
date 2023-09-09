@@ -20,6 +20,7 @@ import {
   ClipSetting,
   ClipAgreement,
   ContentTemplate,
+  Skin,
 } from './entities';
 import { FollowingRepository, RepositoryProvider, UserRepository } from './repositories';
 
@@ -40,6 +41,7 @@ const entities = [
   ClipSetting,
   ClipAgreement,
   ContentTemplate,
+  Skin,
 ];
 
 const repositoryProvider = RepositoryProvider.forRoot([UserRepository, FollowingRepository]);

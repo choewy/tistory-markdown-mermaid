@@ -1,10 +1,17 @@
 import { DateTime } from 'luxon';
-import { BeforeInsert, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Entity, JoinTable, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 import { ContentTemplateCode } from './enums';
+import { Skin } from '../skin';
 
-export class ContentTemplateRelations {}
+export class ContentTemplateRelations {
+  @OneToMany(() => Skin, (e) => e.contentTemplate, {
+    cascade: true,
+  })
+  @JoinTable()
+  skins: Skin[];
+}
 
 @Entity()
 export class ContentTemplate extends ContentTemplateRelations {
