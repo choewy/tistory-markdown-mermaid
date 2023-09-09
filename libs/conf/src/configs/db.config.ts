@@ -32,7 +32,6 @@ export class DbConfig {
         ? this.LOGGING === 'true'
         : (this.LOGGING.split('|') as LogLevel[]),
       autoLoadEntities: true,
-      dropSchema: true,
       namingStrategy: new SnakeNamingStrategy(),
       extra: {
         typeCast: (field: TypeOrmTypeCastField, next: () => void) => {
