@@ -13,6 +13,7 @@ export * from './overlay';
 export * from './noti-widget';
 export * from './message-widget';
 export * from './goal-widget';
+export * from './goal-widget-skin';
 export * from './roulette-widget';
 export * from './wheel-widget';
 export * from './wheel-widget-skin';

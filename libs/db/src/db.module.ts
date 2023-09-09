@@ -25,6 +25,7 @@ import {
   NotiWidget,
   MessageWidget,
   GoalWidget,
+  GoalWidgetSkin,
   RouletteWidget,
 } from './entities';
 
@@ -49,6 +50,7 @@ const entities = [
   NotiWidget,
   MessageWidget,
   GoalWidget,
+  GoalWidgetSkin,
   RouletteWidget,
   WheelWidget,
   WheelWidgetSkin,

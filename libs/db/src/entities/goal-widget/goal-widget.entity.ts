@@ -4,6 +4,7 @@ import { BeforeInsert, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } f
 import { CreateDateTimeColumn, NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
 import { Studio } from '../studio';
+import { GoalWidgetSkin } from '../goal-widget-skin';
 
 export class GoalWidgetRelations {
   @ManyToOne(() => Studio, {
@@ -11,6 +12,12 @@ export class GoalWidgetRelations {
   })
   @JoinColumn()
   studio: Studio;
+
+  @ManyToOne(() => GoalWidgetSkin, (e) => e.widgets, {
+    nullable: true,
+    onDelete: 'SET NULL',
+  })
+  skin: GoalWidgetSkin | null;
 }
 
 @Entity()
