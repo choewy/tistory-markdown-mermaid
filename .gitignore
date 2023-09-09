@@ -1,4 +1,5 @@
 # development
+/temp
 .env*
 !.env.local
 
