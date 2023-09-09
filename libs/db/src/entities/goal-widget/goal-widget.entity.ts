@@ -1,59 +1,53 @@
-import { BeforeInsert, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { ContentTemplate } from '../content-template';
-import { CreateDateTimeColumn, NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 import { DateTime } from 'luxon';
+import { BeforeInsert, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-export class SkinRelations {
-  @ManyToOne(() => ContentTemplate, {
+import { CreateDateTimeColumn, NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
+
+import { Studio } from '../studio';
+
+export class GoalWidgetRelations {
+  @ManyToOne(() => Studio, {
     onDelete: 'CASCADE',
   })
   @JoinColumn()
-  contentTemplate: ContentTemplate;
-  widgets: any[];
+  studio: Studio;
 }
 
 @Entity()
-export class Skin extends SkinRelations {
+export class GoalWidget extends GoalWidgetRelations {
   @PrimaryGeneratedColumn({
-    type: 'smallint',
+    type: 'bigint',
     unsigned: true,
     comment: 'PK',
   })
   readonly id: number;
 
   @NotNullColumn({
-    type: 'smallint',
+    type: 'bigint',
     unsigned: true,
-    comment: 'ContentTemplate PK',
+    comment: 'Studio PK',
   })
-  contentTemplateId: number;
+  studioId: number;
 
   @NotNullColumn({
-    type: 'smallint',
+    type: 'tinyint',
     unsigned: true,
-    comment: '순서',
+    comment: '레이어 순서',
+    default: 5,
   })
-  sequence: number;
+  layer: number;
 
   @NotNullColumn({
-    type: 'varchar',
-    length: 100,
-    comment: '코드',
+    type: 'json',
+    comment: 'CSS',
   })
-  code: string;
-
-  @NotNullColumn({
-    type: 'varchar',
-    length: 100,
-    comment: '이름',
-  })
-  name: string;
+  css: JSON;
 
   @NotNullBooleanColumn({
-    comment: '기본 설정 여부',
-    default: false,
+    comment: '노출여부',
+    default: true,
   })
-  isDefault: boolean;
+  visible: boolean;
 
   @CreateDateTimeColumn({
     comment: '생성일시',

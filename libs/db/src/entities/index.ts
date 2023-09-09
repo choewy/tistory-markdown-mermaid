@@ -8,8 +8,15 @@ export * from './video-donation-setting';
 export * from './wheel-donatioin-setting';
 export * from './play-setting';
 
-export * from './content-template';
-export * from './skin';
+export * from './overlay';
+
+export * from './noti-widget';
+export * from './message-widget';
+export * from './goal-widget';
+export * from './roulette-widget';
+export * from './wheel-widget';
+export * from './wheel-widget-skin';
+export * from './video-widget';
 
 export * from './clip';
 export * from './clip-detail';

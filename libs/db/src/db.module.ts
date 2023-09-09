@@ -19,9 +19,15 @@ import {
   ClipComment,
   ClipSetting,
   ClipAgreement,
-  ContentTemplate,
-  Skin,
+  WheelWidget,
+  WheelWidgetSkin,
+  VideoWidget,
+  NotiWidget,
+  MessageWidget,
+  GoalWidget,
+  RouletteWidget,
 } from './entities';
+
 import { FollowingRepository, RepositoryProvider, UserRepository } from './repositories';
 
 const entities = [
@@ -40,8 +46,13 @@ const entities = [
   ClipComment,
   ClipSetting,
   ClipAgreement,
-  ContentTemplate,
-  Skin,
+  NotiWidget,
+  MessageWidget,
+  GoalWidget,
+  RouletteWidget,
+  WheelWidget,
+  WheelWidgetSkin,
+  VideoWidget,
 ];
 
 const repositoryProvider = RepositoryProvider.forRoot([UserRepository, FollowingRepository]);
