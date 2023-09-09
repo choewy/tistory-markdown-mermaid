@@ -59,8 +59,16 @@ export class PlaySetting extends PlaySettingRelations {
   @NotNullColumn({
     type: 'tinyint',
     unsigned: true,
+    comment: '룰렛 볼륨',
+    default: 50,
+  })
+  rouletteVolume: number;
+
+  @NotNullColumn({
+    type: 'tinyint',
+    unsigned: true,
     comment: '영상 볼륨',
-    default: true,
+    default: 50,
   })
   videoVolume: number;
 
