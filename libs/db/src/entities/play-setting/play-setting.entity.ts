@@ -56,6 +56,14 @@ export class PlaySetting extends PlaySettingRelations {
   })
   imageConfirmTime: number;
 
+  @NotNullColumn({
+    type: 'tinyint',
+    unsigned: true,
+    comment: '영상 볼륨',
+    default: true,
+  })
+  videoVolume: number;
+
   @NotNullBooleanColumn({
     comment: '영상 자동 재생 여부',
     default: true,
