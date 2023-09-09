@@ -5,8 +5,9 @@ import { DbLibModule } from '@app/db';
 import { RedisLibModule } from '@app/redis';
 
 import { CoreModule } from '@service/core';
+import { AuthModule } from '@service/module';
 
 @Module({
-  imports: [ConfLibModule, DbLibModule, RedisLibModule, CoreModule],
+  imports: [ConfLibModule, DbLibModule, RedisLibModule, CoreModule, AuthModule],
 })
 export class RootModule {}
