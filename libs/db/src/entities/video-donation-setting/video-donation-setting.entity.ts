@@ -1,33 +1,26 @@
 import { DateTime } from 'luxon';
-import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
 import { NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
 import { DonationSetting } from '../donation-setting';
 
 export class VideoDonationSettingRelations {
-  @OneToOne(() => DonationSetting, (e) => e.videoDonationSetting, {
+  @OneToOne(() => DonationSetting, (e) => e.video, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn()
+  @JoinColumn({ name: 'id' })
   donationSetting: DonationSetting;
 }
 
 @Entity()
 export class VideoDonationSetting extends VideoDonationSettingRelations {
-  @PrimaryGeneratedColumn({
-    type: 'bigint',
-    unsigned: true,
-    comment: 'PK',
-  })
-  readonly id: number;
-
-  @NotNullColumn({
+  @PrimaryColumn({
     type: 'bigint',
     unsigned: true,
     comment: 'DonationSetting PK',
   })
-  donationSettingId: number;
+  readonly id: number;
 
   @NotNullColumn({
     type: 'int',
@@ -59,7 +52,7 @@ export class VideoDonationSetting extends VideoDonationSettingRelations {
     comment: '영상 재생 제한 시간',
     default: 60,
   })
-  durationLimit: number;
+  duration: number;
 
   @UpdateDateTimeColumn({
     comment: '수정일시',

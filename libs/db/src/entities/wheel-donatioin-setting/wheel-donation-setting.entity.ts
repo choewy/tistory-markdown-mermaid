@@ -1,12 +1,12 @@
 import { DateTime } from 'luxon';
-import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
 import { NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
 import { DonationSetting } from '../donation-setting';
 
 export class WheelDonationSettingRelations {
-  @OneToOne(() => DonationSetting, (e) => e.wheelDonationSetting, {
+  @OneToOne(() => DonationSetting, (e) => e.wheel, {
     onDelete: 'CASCADE',
   })
   @JoinColumn()
@@ -15,19 +15,12 @@ export class WheelDonationSettingRelations {
 
 @Entity()
 export class WheelDonationSetting extends WheelDonationSettingRelations {
-  @PrimaryGeneratedColumn({
-    type: 'bigint',
-    unsigned: true,
-    comment: 'PK',
-  })
-  readonly id: number;
-
-  @NotNullColumn({
+  @PrimaryColumn({
     type: 'bigint',
     unsigned: true,
     comment: 'DonationSetting PK',
   })
-  donationSettingId: number;
+  readonly id: number;
 
   @NotNullBooleanColumn({
     comment: '후원 가능 여부',

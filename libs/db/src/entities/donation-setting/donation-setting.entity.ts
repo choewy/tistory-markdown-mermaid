@@ -20,21 +20,21 @@ export class DonationSettingRelations {
     cascade: true,
   })
   @JoinTable()
-  superStickerDonationSetting: SuperStickerDonationSetting | null;
+  superSticker: SuperStickerDonationSetting | null;
 
   @OneToOne(() => VideoDonationSetting, (e) => e.donationSetting, {
     nullable: true,
     cascade: true,
   })
   @JoinTable()
-  videoDonationSetting: VideoDonationSetting | null;
+  video: VideoDonationSetting | null;
 
   @OneToOne(() => WheelDonationSetting, (e) => e.donationSetting, {
     nullable: true,
     cascade: true,
   })
   @JoinTable()
-  wheelDonationSetting: WheelDonationSetting | null;
+  wheel: WheelDonationSetting | null;
 }
 
 @Entity()

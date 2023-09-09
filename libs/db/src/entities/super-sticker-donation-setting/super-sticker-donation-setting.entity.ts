@@ -1,33 +1,32 @@
 import { DateTime } from 'luxon';
-import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import { NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
+import { NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
 import { DonationSetting } from '../donation-setting';
 
 export class SuperStickerDonationSettingRelations {
-  @OneToOne(() => DonationSetting, (e) => e.superStickerDonationSetting, {
+  @OneToOne(() => DonationSetting, (e) => e.superSticker, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn()
+  @JoinColumn({ name: 'id' })
   donationSetting: DonationSetting;
 }
 
 @Entity()
 export class SuperStickerDonationSetting extends SuperStickerDonationSettingRelations {
-  @PrimaryGeneratedColumn({
-    type: 'bigint',
-    unsigned: true,
-    comment: 'PK',
-  })
-  readonly id: number;
-
-  @NotNullColumn({
+  @PrimaryColumn({
     type: 'bigint',
     unsigned: true,
     comment: 'DonationSetting PK',
   })
-  donationSettingId: number;
+  readonly id: number;
+
+  @NotNullBooleanColumn({
+    comment: '후원 가능 여부',
+    default: true,
+  })
+  active: boolean;
 
   @NotNullColumn({
     type: 'int',
