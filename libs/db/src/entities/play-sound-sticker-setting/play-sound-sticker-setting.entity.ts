@@ -1,12 +1,12 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import { NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
+import { NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
 import { PlaySetting } from '../play-setting';
 
-export class PlayImageSettingRelations {
-  @OneToOne(() => PlaySetting, (e) => e.image, {
+export class PlaySoundStickerSettingRelations {
+  @OneToOne(() => PlaySetting, (e) => e.soundSticker, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'id' })
@@ -14,7 +14,7 @@ export class PlayImageSettingRelations {
 }
 
 @Entity()
-export class PlayImageSetting extends PlayImageSettingRelations {
+export class PlaySoundStickerSetting extends PlaySoundStickerSettingRelations {
   @PrimaryColumn({
     type: 'bigint',
     unsigned: true,
@@ -22,24 +22,13 @@ export class PlayImageSetting extends PlayImageSettingRelations {
   })
   id: number;
 
-  @NotNullBooleanColumn({
-    comment: '재생 여부',
-    default: true,
-  })
-  active: boolean;
-
-  @NotNullBooleanColumn({
-    comment: '자동 재생 여부',
-    default: true,
-  })
-  auto: boolean;
-
   @NotNullColumn({
     type: 'tinyint',
-    comment: '확인 시간',
-    default: 12,
+    unsigned: true,
+    comment: '볼륨',
+    default: 50,
   })
-  confirmTime: number;
+  volume: number;
 
   @UpdateDateTimeColumn({
     comment: '수정일시',

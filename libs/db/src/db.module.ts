@@ -4,11 +4,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfLibModuleRef, DbConfig } from '@app/conf';
 
 import {
-  Broadcast,
-  Studio,
-  Following,
   User,
+  Following,
+  Studio,
+  Broadcast,
   PlaySetting,
+  PlayDefaultSetting,
+  PlayNotiSetting,
+  PlayImageSetting,
+  PlayRouletteSetting,
+  PlayVideoSetting,
+  PlaySuperStickerSetting,
+  PlaySoundStickerSetting,
+  PlayTtsSetting,
   DonationSetting,
   SuperStickerDonationSetting,
   VideoDonationSetting,
@@ -28,10 +36,6 @@ import {
   GoalWidgetSkin,
   RouletteWidget,
   RouletteWidgetSkin,
-  PlayNotiSetting,
-  PlayImageSetting,
-  PlayRouletteSetting,
-  PlayVideoSetting,
 } from './entities';
 
 import { FollowingRepository, RepositoryProvider, UserRepository } from './repositories';
@@ -42,10 +46,14 @@ const entities = [
   Studio,
   Broadcast,
   PlaySetting,
+  PlayDefaultSetting,
   PlayNotiSetting,
+  PlayTtsSetting,
   PlayImageSetting,
   PlayRouletteSetting,
   PlayVideoSetting,
+  PlaySuperStickerSetting,
+  PlaySoundStickerSetting,
   DonationSetting,
   SuperStickerDonationSetting,
   VideoDonationSetting,

@@ -5,8 +5,8 @@ import { NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/
 
 import { PlaySetting } from '../play-setting';
 
-export class PlayImageSettingRelations {
-  @OneToOne(() => PlaySetting, (e) => e.image, {
+export class PlaySuperStickerSettingRelations {
+  @OneToOne(() => PlaySetting, (e) => e.superSticker, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'id' })
@@ -14,7 +14,7 @@ export class PlayImageSettingRelations {
 }
 
 @Entity()
-export class PlayImageSetting extends PlayImageSettingRelations {
+export class PlaySuperStickerSetting extends PlaySuperStickerSettingRelations {
   @PrimaryColumn({
     type: 'bigint',
     unsigned: true,
@@ -28,18 +28,13 @@ export class PlayImageSetting extends PlayImageSettingRelations {
   })
   active: boolean;
 
-  @NotNullBooleanColumn({
-    comment: '자동 재생 여부',
-    default: true,
-  })
-  auto: boolean;
-
   @NotNullColumn({
     type: 'tinyint',
-    comment: '확인 시간',
+    unsigned: true,
+    comment: '재생 시간',
     default: 12,
   })
-  confirmTime: number;
+  duration: number;
 
   @UpdateDateTimeColumn({
     comment: '수정일시',

@@ -5,8 +5,8 @@ import { NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/
 
 import { PlaySetting } from '../play-setting';
 
-export class PlayImageSettingRelations {
-  @OneToOne(() => PlaySetting, (e) => e.image, {
+export class PlayDefaultSettingRelations {
+  @OneToOne(() => PlaySetting, (e) => e.default, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'id' })
@@ -14,19 +14,13 @@ export class PlayImageSettingRelations {
 }
 
 @Entity()
-export class PlayImageSetting extends PlayImageSettingRelations {
+export class PlayDefaultSetting extends PlayDefaultSettingRelations {
   @PrimaryColumn({
     type: 'bigint',
     unsigned: true,
     comment: 'PlaySetting PK',
   })
   id: number;
-
-  @NotNullBooleanColumn({
-    comment: '재생 여부',
-    default: true,
-  })
-  active: boolean;
 
   @NotNullBooleanColumn({
     comment: '자동 재생 여부',
@@ -36,10 +30,23 @@ export class PlayImageSetting extends PlayImageSettingRelations {
 
   @NotNullColumn({
     type: 'tinyint',
-    comment: '확인 시간',
-    default: 12,
+    comment: '재생 시간',
+    default: 10,
   })
-  confirmTime: number;
+  duration: number;
+
+  @NotNullColumn({
+    type: 'tinyint',
+    comment: '재생 딜레이',
+    default: 6,
+  })
+  delay: number;
+
+  @NotNullBooleanColumn({
+    comment: '칭호 노출 여부',
+    default: true,
+  })
+  achievement: boolean;
 
   @UpdateDateTimeColumn({
     comment: '수정일시',

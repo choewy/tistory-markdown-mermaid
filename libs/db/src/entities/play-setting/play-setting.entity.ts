@@ -1,13 +1,17 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, JoinTable, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-import { NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
+import { NotNullColumn, UpdateDateTimeColumn } from '@app/db/decorators';
 
 import { Studio } from '../studio';
 import { PlayNotiSetting } from '../play-noti-setting';
 import { PlayImageSetting } from '../play-image-setting';
 import { PlayRouletteSetting } from '../play-roulette-setting';
 import { PlayVideoSetting } from '../play-video-setting';
+import { PlaySuperStickerSetting } from '../play-super-sticker-setting';
+import { PlaySoundStickerSetting } from '../play-sound-sticker-setting';
+import { PlayTtsSetting } from '../play-tts-setting';
+import { PlayDefaultSetting } from '../play-default-setting';
 
 export class PlaySettingRelations {
   @OneToOne(() => Studio, (e) => e.playSetting, {
@@ -16,17 +20,41 @@ export class PlaySettingRelations {
   @JoinColumn()
   studio: Studio;
 
+  @OneToOne(() => PlayDefaultSetting, (e) => e.playSetting, {
+    cascade: true,
+  })
+  @JoinTable()
+  default: PlayDefaultSetting;
+
   @OneToOne(() => PlayNotiSetting, (e) => e.playSetting, {
     cascade: true,
   })
   @JoinTable()
   noti: PlayNotiSetting;
 
+  @OneToOne(() => PlayTtsSetting, (e) => e.playSetting, {
+    cascade: true,
+  })
+  @JoinTable()
+  tts: PlayTtsSetting;
+
   @OneToOne(() => PlayImageSetting, (e) => e.playSetting, {
     cascade: true,
   })
   @JoinTable()
   image: PlayImageSetting;
+
+  @OneToOne(() => PlaySuperStickerSetting, (e) => e.playSetting, {
+    cascade: true,
+  })
+  @JoinTable()
+  superSticker: PlaySuperStickerSetting;
+
+  @OneToOne(() => PlaySoundStickerSetting, (e) => e.playSetting, {
+    cascade: true,
+  })
+  @JoinTable()
+  soundSticker: PlaySoundStickerSetting;
 
   @OneToOne(() => PlayRouletteSetting, (e) => e.playSetting, {
     cascade: true,
@@ -56,26 +84,6 @@ export class PlaySetting extends PlaySettingRelations {
     comment: 'Studio PK',
   })
   studioId: number;
-
-  @NotNullColumn({
-    type: 'tinyint',
-    comment: '재생 시간',
-    default: 10,
-  })
-  duration: number;
-
-  @NotNullColumn({
-    type: 'tinyint',
-    comment: '재생 딜레이',
-    default: 6,
-  })
-  delay: number;
-
-  @NotNullBooleanColumn({
-    comment: '칭호 노출 여부',
-    default: true,
-  })
-  achievement: boolean;
 
   @UpdateDateTimeColumn({
     comment: '수정일시',
