@@ -1,0 +1,3 @@
+[submodule "submodule/stickybomb-kr-entity"]
+	path = submodule/stickybomb-kr-entity
+	url = https://github.com/choewy/stickybomb-kr-entity.git

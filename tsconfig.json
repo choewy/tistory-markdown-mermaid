@@ -19,7 +19,8 @@
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true,
     "paths": {
-      "@lib/entity": ["lib/entity/src"],
+      "@submodule/entity": ["submodule/stickybomb-kr-entity/src"],
+      "@submodule/entity/*": ["submodule/stickybomb-kr-entity/src/*"],
       "@app/*": ["src/*"]
     }
   }
