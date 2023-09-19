@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "submodule:entity": "git submodule update --remote submodule/stickybomb-kr-entity",
+    "submodule": "git submodule foreach git pull origin master",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
