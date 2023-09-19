@@ -80,6 +80,7 @@
     ],
     "moduleNameMapper": {
       "^@submodule/entity(|/.*)$": "<rootDir>/submodule/stickybomb-kr-entity/src/$1",
+      "^@submodule/core(|/.*)$": "<rootDir>/submodule/stickybomb-core/src/$1",
       "^@app(|/.*)$": "<rootDir>/src/$1"
     }
   }

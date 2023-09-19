@@ -21,6 +21,8 @@
     "paths": {
       "@submodule/entity": ["submodule/stickybomb-kr-entity/src"],
       "@submodule/entity/*": ["submodule/stickybomb-kr-entity/src/*"],
+      "@submodule/core": ["submodule/stickybomb-core/src"],
+      "@submodule/core/*": ["submodule/stickybomb-core/src/*"],
       "@app/*": ["src/*"]
     }
   }

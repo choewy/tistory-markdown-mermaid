@@ -7,6 +7,12 @@
     "webpack": true,
     "assets": [
       {
+        "include": "submodule/stickybomb-core/src/**/*",
+        "exclude": "submodule/stickybomb-core/src/main.ts",
+        "outDir": "dist/submodule/stickybomb-core",
+        "watchAssets": true
+      },
+      {
         "include": "submodule/stickybomb-kr-entity/src/**/*",
         "exclude": "submodule/stickybomb-kr-entity/src/main.ts",
         "outDir": "dist/submodule/stickybomb-kr-entity",
