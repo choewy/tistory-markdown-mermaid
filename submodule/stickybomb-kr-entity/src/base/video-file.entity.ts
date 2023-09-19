@@ -1,6 +1,6 @@
 import Decimal from 'decimal.js';
 
-import { NotNullDecimalColumn } from 'submodule/stickybomb-kr-entity/src/decorators';
+import { NotNullDecimalColumn } from '@entity/decorators';
 
 import { BaseFileEntity } from './base-file.entity';
 

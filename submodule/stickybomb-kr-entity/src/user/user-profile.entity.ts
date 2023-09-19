@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, JoinTable, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-import { NotNullColumn, NullableColumn, UpdateDateTimeColumn } from 'submodule/stickybomb-kr-entity/src/decorators';
+import { NotNullColumn, NullableColumn, UpdateDateTimeColumn } from '@entity/decorators';
 
 import { User } from './user.entity';
 import { UserImage } from './user-image.entity';

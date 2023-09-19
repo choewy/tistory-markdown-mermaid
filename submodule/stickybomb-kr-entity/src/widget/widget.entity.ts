@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-import { NotNullColumn, UpdateDateTimeColumn } from 'submodule/stickybomb-kr-entity/src/decorators';
-import { Overlay } from 'submodule/stickybomb-kr-entity/src/overlay';
+import { NotNullColumn, UpdateDateTimeColumn } from '@entity/decorators';
+import { Overlay } from '@entity/overlay';
 
 import { WidgetType } from './enums';
 

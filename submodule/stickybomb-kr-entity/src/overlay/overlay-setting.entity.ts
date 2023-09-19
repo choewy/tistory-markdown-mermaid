@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import { UpdateDateTimeColumn } from 'submodule/stickybomb-kr-entity/src/decorators';
+import { UpdateDateTimeColumn } from '@entity/decorators';
 import { Overlay } from './overlay.entity';
 
 export class OverlaySettingRelations {

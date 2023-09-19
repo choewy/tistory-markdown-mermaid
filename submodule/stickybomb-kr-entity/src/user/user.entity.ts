@@ -1,13 +1,8 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinTable, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-import {
-  CreateDateTimeColumn,
-  NotNullColumn,
-  NullableDateTimeColumn,
-  UpdateDateTimeColumn,
-} from 'submodule/stickybomb-kr-entity/src/decorators';
-import { Studio, StudioBan } from 'submodule/stickybomb-kr-entity/src/studio';
+import { CreateDateTimeColumn, NotNullColumn, NullableDateTimeColumn, UpdateDateTimeColumn } from '@entity/decorators';
+import { Studio, StudioBan } from '@entity/studio';
 
 import { UserProfileType, UserStatus, UserType } from './enums';
 

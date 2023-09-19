@@ -1,11 +1,7 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinTable, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-import {
-  CreateDateTimeColumn,
-  NotNullColumn,
-  UpdateDateTimeColumn,
-} from 'submodule/stickybomb-kr-entity/src/decorators';
+import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@entity/decorators';
 
 import { NoticeSound } from './notice-sound.entity';
 

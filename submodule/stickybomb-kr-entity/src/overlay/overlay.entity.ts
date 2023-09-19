@@ -10,13 +10,9 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import {
-  CreateDateTimeColumn,
-  NotNullColumn,
-  UpdateDateTimeColumn,
-} from 'submodule/stickybomb-kr-entity/src/decorators';
-import { Studio } from 'submodule/stickybomb-kr-entity/src/studio';
-import { Widget } from 'submodule/stickybomb-kr-entity/src/widget';
+import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@entity/decorators';
+import { Studio } from '@entity/studio';
+import { Widget } from '@entity/widget';
 
 import { OverlaySetting } from './overlay-setting.entity';
 

@@ -10,15 +10,11 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import {
-  CreateDateTimeColumn,
-  NotNullColumn,
-  UpdateDateTimeColumn,
-} from 'submodule/stickybomb-kr-entity/src/decorators';
-import { User } from 'submodule/stickybomb-kr-entity/src/user';
-import { Overlay } from 'submodule/stickybomb-kr-entity/src/overlay';
-import { NoticeSound } from 'submodule/stickybomb-kr-entity/src/notice';
-import { StickerCategory } from 'submodule/stickybomb-kr-entity/src/sticker';
+import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@entity/decorators';
+import { User } from '@entity/user';
+import { Overlay } from '@entity/overlay';
+import { NoticeSound } from '@entity/notice';
+import { StickerCategory } from '@entity/sticker';
 
 import { StudioBroadcast } from './studio-broadcast.entity';
 import { StudioDonationSetting } from './studio-donation-setting.entity';

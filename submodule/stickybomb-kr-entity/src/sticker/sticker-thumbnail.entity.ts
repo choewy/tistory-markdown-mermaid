@@ -1,7 +1,7 @@
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
 import { Sticker } from './sticker.entity';
-import { ImageFileEntity } from 'submodule/stickybomb-kr-entity/src/base';
+import { ImageFileEntity } from '@entity/base';
 import { DateTime } from 'luxon';
 
 export class StickerThumbnailRelations extends ImageFileEntity {

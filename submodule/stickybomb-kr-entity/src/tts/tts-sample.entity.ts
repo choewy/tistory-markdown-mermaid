@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import { SoundFileEntity } from 'submodule/stickybomb-kr-entity/src/base';
+import { SoundFileEntity } from '@entity/base';
 
 import { Tts } from './tts.entity';
 

@@ -10,12 +10,12 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { NotNullColumn, NullableColumn } from 'submodule/stickybomb-kr-entity/src/decorators';
-import { Studio, StudioNoticeSetting } from 'submodule/stickybomb-kr-entity/src/studio';
+import { NotNullColumn, NullableColumn } from '@entity/decorators';
+import { Studio, StudioNoticeSetting } from '@entity/studio';
 
 import { NoticeSoundDefaultType } from './enums';
 import { NoticeSoundCategory } from './notice-sound-category.entity';
-import { SoundFileEntity } from 'submodule/stickybomb-kr-entity/src/base';
+import { SoundFileEntity } from '@entity/base';
 
 export class NoticeSoundRelations extends SoundFileEntity {
   @ManyToOne(() => Studio, (e) => e.noticeSounds, {

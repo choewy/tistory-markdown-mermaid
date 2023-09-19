@@ -1,3 +1,3 @@
-[submodule "stickybomb-kr-entity"]
-	path = stickybomb-kr-entity
+[submodule "submodule/stickybomb-kr-entity"]
+	path = submodule/stickybomb-kr-entity
 	url = https://github.com/choewy/stickybomb-kr-entity

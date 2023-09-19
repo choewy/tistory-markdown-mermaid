@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 
-import { CreateDateTimeColumn } from 'submodule/stickybomb-kr-entity/src/decorators';
-import { User } from 'submodule/stickybomb-kr-entity/src/user';
+import { CreateDateTimeColumn } from '@entity/decorators';
+import { User } from '@entity/user';
 
 import { Studio } from './studio.entity';
 

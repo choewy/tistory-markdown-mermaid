@@ -16,8 +16,8 @@ import {
   NullableColumn,
   NullableDateTimeColumn,
   UpdateDateTimeColumn,
-} from 'submodule/stickybomb-kr-entity/src/decorators';
-import { Studio } from 'submodule/stickybomb-kr-entity/src/studio';
+} from '@entity/decorators';
+import { Studio } from '@entity/studio';
 
 import { StickerCategoryScope, StickerCategoryStatus } from './enums';
 import { StickerCategoryThumbnail } from './sticker-category-thumbnail.entity';

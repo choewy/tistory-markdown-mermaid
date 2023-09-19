@@ -3,11 +3,7 @@ import Decimal from 'decimal.js';
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import {
-  NotNullColumn,
-  NotNullDecimalColumn,
-  UpdateDateTimeColumn,
-} from 'submodule/stickybomb-kr-entity/src/decorators';
+import { NotNullColumn, NotNullDecimalColumn, UpdateDateTimeColumn } from '@entity/decorators';
 
 import { User } from './user.entity';
 

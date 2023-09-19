@@ -17,7 +17,7 @@ import {
   NullableColumn,
   NullableDateTimeColumn,
   UpdateDateTimeColumn,
-} from 'submodule/stickybomb-kr-entity/src/decorators';
+} from '@entity/decorators';
 
 import { StickerStatus, StickerType } from './enums';
 import { StickerCategory } from './sticker-category.entity';

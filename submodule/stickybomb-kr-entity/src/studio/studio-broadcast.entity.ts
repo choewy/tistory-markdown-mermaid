@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 
-import { NullableColumn, UpdateDateTimeColumn } from 'submodule/stickybomb-kr-entity/src/decorators';
+import { NullableColumn, UpdateDateTimeColumn } from '@entity/decorators';
 
 import { StudioBroadcastPlatform } from './enums';
 import { Studio } from './studio.entity';

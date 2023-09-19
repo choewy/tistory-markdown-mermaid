@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import { VideoFileEntity } from 'submodule/stickybomb-kr-entity/src/base';
+import { VideoFileEntity } from '@entity/base';
 
 import { Sticker } from './sticker.entity';
 

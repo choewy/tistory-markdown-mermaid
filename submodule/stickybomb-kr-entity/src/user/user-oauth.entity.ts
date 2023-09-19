@@ -16,7 +16,7 @@ import {
   NullableColumn,
   NullableDateTimeColumn,
   UpdateDateTimeColumn,
-} from 'submodule/stickybomb-kr-entity/src/decorators';
+} from '@entity/decorators';
 
 import { UserOauthPlatform, UserOauthStatus } from './enums';
 

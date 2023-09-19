@@ -1,4 +1,4 @@
-import { NotNullColumn } from 'submodule/stickybomb-kr-entity/src/decorators';
+import { NotNullColumn } from '@entity/decorators';
 
 import { BaseFileEntity } from './base-file.entity';
 

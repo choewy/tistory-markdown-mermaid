@@ -1,11 +1,7 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import {
-  NotNullBooleanColumn,
-  NotNullColumn,
-  UpdateDateTimeColumn,
-} from 'submodule/stickybomb-kr-entity/src/decorators';
+import { NotNullBooleanColumn, NotNullColumn, UpdateDateTimeColumn } from '@entity/decorators';
 
 import { Studio } from './studio.entity';
 

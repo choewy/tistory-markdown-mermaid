@@ -7,7 +7,7 @@ import {
   NotNullColumn,
   NullableDateTimeColumn,
   UpdateDateTimeColumn,
-} from 'submodule/stickybomb-kr-entity/src/decorators';
+} from '@entity/decorators';
 
 import { TtsProvider, TtsGoogleLanguage, TtsTypecastLanguage, TtsStatus } from './enums';
 import { TtsSample } from './tts-sample.entity';

@@ -1,10 +1,6 @@
 import { DateTime } from 'luxon';
 
-import {
-  CreateDateTimeColumn,
-  NotNullColumn,
-  UpdateDateTimeColumn,
-} from 'submodule/stickybomb-kr-entity/src/decorators';
+import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@entity/decorators';
 
 export class BaseFileEntity {
   @NotNullColumn({
