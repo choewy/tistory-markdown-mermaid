@@ -3,6 +3,15 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "assets": [
+      {
+        "include": "submodule/stickybomb-kr-entity/src/**/*",
+        "exclude": "submodule/stickybomb-kr-entity/src/main.ts",
+        "outDir": "dist/submodule/stickybomb-kr-entity",
+        "watchAssets": true
+      }
+    ]
   }
 }
