@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-import { NullableColumn } from '@entity/decorators';
-import { ImageFileEntity } from '@entity/base';
+import { NullableColumn } from '@submodule/entity/decorators';
+import { ImageFileEntity } from '@submodule/entity/base';
 
 import { UserProfile } from './user-profile.entity';
 import { UserOauth } from './user-oauth.entity';

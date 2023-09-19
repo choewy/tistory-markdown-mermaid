@@ -1,4 +1,4 @@
-import { NotNullColumn } from '@entity/decorators';
+import { NotNullColumn } from '@submodule/entity/decorators';
 
 import { BaseFileEntity } from './base-file.entity';
 

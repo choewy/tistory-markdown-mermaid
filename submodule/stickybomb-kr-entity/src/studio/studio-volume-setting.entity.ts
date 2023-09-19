@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import { NotNullColumn, UpdateDateTimeColumn } from '@entity/decorators';
+import { NotNullColumn, UpdateDateTimeColumn } from '@submodule/entity/decorators';
 import { Studio } from './studio.entity';
 
 export class StudioVolumeSettingRelations {

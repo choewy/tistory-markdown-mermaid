@@ -1,8 +1,13 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
-import { CreateDateTimeColumn, NotNullColumn, NullableColumn, UpdateDateTimeColumn } from '@entity/decorators';
-import { NoticeSound } from '@entity/notice';
+import {
+  CreateDateTimeColumn,
+  NotNullColumn,
+  NullableColumn,
+  UpdateDateTimeColumn,
+} from '@submodule/entity/decorators';
+import { NoticeSound } from '@submodule/entity/notice';
 
 import { StudioNotiSettingType } from './enums';
 import { Studio } from './studio.entity';

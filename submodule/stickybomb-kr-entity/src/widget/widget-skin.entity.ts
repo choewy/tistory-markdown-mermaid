@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@entity/decorators';
+import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@submodule/entity/decorators';
 import { WidgetType } from './enums';
 
 export class WidgetSkinRelations {}

@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import { NotNullBooleanColumn, UpdateDateTimeColumn } from '@entity/decorators';
+import { NotNullBooleanColumn, UpdateDateTimeColumn } from '@submodule/entity/decorators';
 
 import { User } from './user.entity';
 

@@ -7,7 +7,7 @@ import {
   NotNullColumn,
   NullableDateTimeColumn,
   UpdateDateTimeColumn,
-} from '@entity/decorators';
+} from '@submodule/entity/decorators';
 
 import { TtsProvider, TtsGoogleLanguage, TtsTypecastLanguage, TtsStatus } from './enums';
 import { TtsSample } from './tts-sample.entity';

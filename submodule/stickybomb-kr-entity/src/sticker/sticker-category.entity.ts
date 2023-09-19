@@ -16,8 +16,8 @@ import {
   NullableColumn,
   NullableDateTimeColumn,
   UpdateDateTimeColumn,
-} from '@entity/decorators';
-import { Studio } from '@entity/studio';
+} from '@submodule/entity/decorators';
+import { Studio } from '@submodule/entity/studio';
 
 import { StickerCategoryScope, StickerCategoryStatus } from './enums';
 import { StickerCategoryThumbnail } from './sticker-category-thumbnail.entity';

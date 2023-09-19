@@ -10,9 +10,9 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@entity/decorators';
-import { Studio } from '@entity/studio';
-import { Widget } from '@entity/widget';
+import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@submodule/entity/decorators';
+import { Studio } from '@submodule/entity/studio';
+import { Widget } from '@submodule/entity/widget';
 
 import { OverlaySetting } from './overlay-setting.entity';
 

@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 
-import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@entity/decorators';
+import { CreateDateTimeColumn, NotNullColumn, UpdateDateTimeColumn } from '@submodule/entity/decorators';
 
 export class BaseFileEntity {
   @NotNullColumn({

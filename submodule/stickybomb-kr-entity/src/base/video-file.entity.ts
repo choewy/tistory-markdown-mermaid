@@ -1,6 +1,6 @@
 import Decimal from 'decimal.js';
 
-import { NotNullDecimalColumn } from '@entity/decorators';
+import { NotNullDecimalColumn } from '@submodule/entity/decorators';
 
 import { BaseFileEntity } from './base-file.entity';
 

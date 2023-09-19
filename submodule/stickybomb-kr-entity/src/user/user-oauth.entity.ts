@@ -16,7 +16,7 @@ import {
   NullableColumn,
   NullableDateTimeColumn,
   UpdateDateTimeColumn,
-} from '@entity/decorators';
+} from '@submodule/entity/decorators';
 
 import { UserOauthPlatform, UserOauthStatus } from './enums';
 

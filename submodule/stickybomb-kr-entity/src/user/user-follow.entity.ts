@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 
-import { CreateDateTimeColumn } from '@entity/decorators';
-import { User } from '@entity/user';
+import { CreateDateTimeColumn } from '@submodule/entity/decorators';
+import { User } from '@submodule/entity/user';
 
 export class UserFollowRelations {
   @ManyToOne(() => User, (e) => e.followings, {

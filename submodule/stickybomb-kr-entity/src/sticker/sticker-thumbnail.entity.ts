@@ -1,8 +1,9 @@
+import { DateTime } from 'luxon';
 import { BeforeInsert, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
+import { ImageFileEntity } from '@submodule/entity/base';
+
 import { Sticker } from './sticker.entity';
-import { ImageFileEntity } from '@entity/base';
-import { DateTime } from 'luxon';
 
 export class StickerThumbnailRelations extends ImageFileEntity {
   @OneToOne(() => Sticker, (e) => e.thumbnail, {
