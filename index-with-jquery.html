@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Required jQuery CDN script tags -->
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    $(document).ready(() => {
+      const elements = $('code.language-mermaid');
+
+      elements.parent('pre').css('text-align', 'center');
+      elements.contents().unwrap().wrap('<div class="mermaid"></div>');
+
+      mermaid.initialize({ startOnLoad: true });
+    });
+  </script>
+
+  <!-- Tistory Title -->
+  <title>[##_page_title_##]</title>
+</head>
+
+</html>
